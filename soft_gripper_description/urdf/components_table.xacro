@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot name="components_table" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="components_table" params="prefix parent *origin ">
+    
+        <!-- ARTICULACION BASE ROBOT-TABLA -->
+        <joint name="${prefix}_base_joint" type="fixed">
+            <!-- hay que poner este origen en el lugar que corresponda respecto al base_footprint -->
+            <!-- Notas: 
+                x = 0 (porque esta centrado)
+                y = (mitad del ancho del robot (31.85, justo las argollas segun el manual del kairos) + mitad de la tabla(8.25))
+                z = (distancia del suelo hasta la cara inferior de la tabla (35))       -->
+            <origin xyz="0.0 0.375 0.35" rpy="0.0 0.0 3.14"/>
+            <parent link="${parent}"/>
+            <child link="${prefix}_base_link"/>
+        </joint>
+
+        <!-- ESLABON TABLA -->
+        <link name="${prefix}_base_link">
+            <!-- atributo visual de la herramienta -->
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://soft_gripper_description/meshes/plank.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="tpte">
+                    <color rgba="0.0 1 0.0 0.9"/>
+                </material>
+            </visual>
+
+            <!-- colision en forma de cubo que abarque el conjunto de la tabla -->
+            <collision>
+                <origin xyz="0 0 0.09" rpy="0 0 0" />
+                <geometry>
+                    <!-- <box size="0.6 0.165 0.180"/> -->
+                    <box size="0.6 0.165 0.220"/>
+                </geometry>
+            </collision>
+
+            <!-- atributo visual para ver que forma tiene la colision -->
+            <visual>
+                <origin xyz="0 0 0.09" rpy="0 0 0" />
+                <geometry>
+                    <!-- <box size="0.6 0.165 0.180"/> -->
+                    <box size="0.6 0.165 0.220"/>
+                </geometry>
+                <material name="tpte">
+                    <color rgba="0.5 0.0 0.0 0.002"/>
+                </material>
+            </visual>
+        </link>
+    </xacro:macro>
+</robot>

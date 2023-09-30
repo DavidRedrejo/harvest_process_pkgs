@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<robot name="soft_gripper" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="soft_gripper" params="prefix parent *origin ">
+    
+        <!-- ARTICULACION ROBOT-PINZA -->
+        <joint name="${prefix}_base_joint" type="fixed">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <parent link="${parent}"/>
+            <child link="${prefix}_base_link"/>
+        </joint>
+
+        <!-- ESLABON HERRAMIENTA -->
+        <link name="${prefix}_base_link">
+            <!-- atributo visual de la herramienta -->
+            <visual>
+                <origin xyz="0 0 0" rpy="0 1.56 0" />
+                <geometry>
+                    <mesh filename="package://soft_gripper_description/meshes/tool_10cm.stl" scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="tpte">
+                    <color rgba="0.0 1 0.0 0.9"/>
+                </material>
+            </visual>
+
+            <!-- colision en forma de caja que abarque el conjunto de la pinza -->
+            <collision>
+                <origin xyz="0.11 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.220 0.165 0.160"/>
+                </geometry>
+            </collision>
+
+            <!-- atributo visual para ver que forma tiene la colision -->
+            <visual>
+                <origin xyz="0.11 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.220 0.165 0.160"/>
+                </geometry>
+                <material name="tpte">
+                    <color rgba="0.5 0.0 0.0 0.002"/>
+                </material>
+            </visual>
+        </link>
+
+        <!-- ARTICULACION HERRAMIENTA-EFECTOR FINAL -->
+        <joint name="${prefix}_end_joint" type="fixed">
+            <origin xyz="0.210 0.0 0" rpy="0.0 0.0 0.0"/>
+            <parent link="${prefix}_base_link"/>
+            <child link="${prefix}_end_link"/>
+        </joint>
+        <!-- ESLABON EFECTOR FINAL -->
+        <link name="${prefix}_end_link"/>
+
+        <!-- <gazebo reference="${prefix}_base_link">
+            <material>Gazebo/BlueTransparent</material>
+            <turnGravityOff>false</turnGravityOff>
+        </gazebo> -->
+    </xacro:macro>
+</robot>
