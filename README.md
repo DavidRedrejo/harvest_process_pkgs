@@ -12,4 +12,4 @@ Crea la descripción de la herramienta (`soft_gripper.xacro`) y de la tabla con 
 Por medio del asistente (_MoveIt Setup Assistant_) se crea este paquete de configuración, para poder controlar y mover el brazo haciendo uso de las librerías y servicios de _MoveIt_.
 
 ### harvest_process
-Crea las funciones necesarias para llevar a cabo el proceso.
+Crea las funciones necesarias para llevar a cabo la demostración del proceso.
