@@ -1,8 +1,10 @@
 # harvest_process_pkgs
 
-Conjunto de paquetes desarrollados para crear un demostrador de un proceso de recolección de fruta con una pinza modular blanda acoplada al robot RB-Kairos
+Conjunto de paquetes desarrollados para crear un demostrador de un proceso de recolección de fruta con una pinza modular blanda acoplada al robot RB-Kairos.
 
-ROS version: kinetic
+Este repositorio forma parte de un Trabajo Fin de Máster (TFM) en Ingeniería Industrial.
+
+ROS version: kinetic. Ubuntu: 16.04 LTS
 
 ## Paquetes desarrollados
 ### soft_gripper_description
