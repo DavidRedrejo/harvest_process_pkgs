@@ -1,0 +1,7 @@
+<launch>
+
+    <arg name="launch_rviz" default="true"/>
+
+    <node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="false" args="-d $(find harvest_process)/rviz/fruit_demo.rviz"/>
+
+</launch>

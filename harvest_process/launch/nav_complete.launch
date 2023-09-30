@@ -1,0 +1,26 @@
+<launch>
+
+    <!-- NOMBRE DEL MAPA A USAR -->
+    <arg name="map_file_name" default="laboratorioTFM.yaml"/>
+
+    <group ns="robot">
+
+        <!-- SERVIDOR DEL MAPA -->
+        <include file="$(find summit_xl_localization)/launch/map_server.launch">
+            <arg name="prefix" value="robot_"/>
+            <arg name="map_file" value="$(arg map_file_name)"/>
+	    </include>
+
+        <!-- LOCALIZACION, AMCL -->
+        <include file="$(find summit_xl_localization)/launch/amcl.launch">
+            <arg name="prefix" value="robot_"/>
+	    </include>
+
+        <!-- NAVEGACION -->
+        <include file="$(find summit_xl_navigation)/launch/rbkairos_move_base.launch">
+            <arg name="prefix" value="robot_"/>
+	    </include>
+
+    </group>
+
+</launch>

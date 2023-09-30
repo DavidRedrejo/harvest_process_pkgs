@@ -1,0 +1,10 @@
+# REQUEST
+string motion_code                  # codigo segun el movimiento que se quiera hacer (INIT, NAVIGATE, APPROACH, PICK, BACK, GET_EE, TEST)
+geometry_msgs/Point object_coord    # coordenadas del objeto
+float32 approach_distance           # distancia a la que se coloca la pinza en la posicion de aproximacion al objeto
+float32 forward_distance            # distancia que avanza la pinza para coger el objeto
+float32 backward_distance           # distancia que retrocede la pinza despues de coger el objeto
+---
+# RESPONSE
+bool move_successfull   # ejecucion exitosa?
+string message          # mas informacion sobre el resultado

@@ -1,0 +1,15 @@
+<launch>
+    <!-- Este lanzador sirve para ACTIVAR el brazo e iniciar el control con MoveIt -->
+
+    <!-- Activacion del brazo -->
+    <include file="$(find summit_xl_bringup)/launch/rbkairos_arm.launch">
+        <arg name="run_control" value="true"/>
+	</include>
+
+    <!-- Planificador de MoveIt para las trayectorias del brazo -->
+    <!-- Usar el group ns es equivalente al ROS NAMESPACE de la linea de comandos -->
+    <group ns="robot">
+        <include  file="$(find soft_gripper_moveit_config)/launch/demo.launch"/>
+    </group>
+
+</launch>

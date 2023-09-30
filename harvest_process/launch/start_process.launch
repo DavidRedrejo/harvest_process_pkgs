@@ -1,0 +1,9 @@
+<launch>
+
+    <!-- Se incluye el servidor del servicio encargado de mover el brazo -->
+    <include file="$(find harvest_process)/launch/start_arm_service.launch"/>
+
+    <!-- Se inicia el nodo que ejecuta todo el proceso: leer datos, mover base y llamar al servicio del movimiento del brazo-->
+    <node type="start_fruit_harvesting_demo.py" name="harvest_demo_node" pkg="harvest_process"/>
+
+</launch>

@@ -1,0 +1,12 @@
+<launch>
+
+    <!-- ACTIVAR e iniciar MoveIt para controlar brazo -->
+    <!-- Se hace desde dentro del robot usando el arm_control_activation.launch -->
+
+    <!-- Se inicia el servidor del servicio encargado de mover el brazo -->
+    <group ns="robot">
+        <node type="move_arm_service_server.py" name="harvest_arm_service_server" pkg="harvest_process" output="screen"/>
+    </group>
+
+
+</launch>
